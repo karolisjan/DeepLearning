@@ -69,3 +69,18 @@ def visualise_predictions(X, y_true, y_hat):
     
     plt.tight_layout()
     plt.show()
+	
+	
+def report_results(cv_scores, train_scores=None): 
+    print("Cross-Validation (CV) results:\n")
+    if train_scores != None:
+        print("Mean training score: %.2f%% +- %.2f%%" % (train_scores.mean() * 100, 
+                                                         train_scores.std() * 200))
+    print("Min test score: %.2f%% \t\t\t\t<- worst case" % (cv_scores.min() * 100))
+    print("Max test score: %.2f%% \t\t\t\t<- best case" % (cv_scores.max() * 100))
+    print("Mean test score: %.2f%% +- %.2f%% (95%% conf.) \t<- expected performance" % 
+          (cv_scores.mean() * 100, cv_scores.std() * 200))
+    
+    print("\n95/100 times the test score will be in range %.2f-%.2f%%" %
+         (((cv_scores.mean() - 2 * cv_scores.std()) * 100), 
+          ((cv_scores.mean() + 2 * cv_scores.std()) * 100)))
