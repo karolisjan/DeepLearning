@@ -13,10 +13,13 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import TruncatedSVD
 
 
-def plot_confusion_matrix(y_true, y_hat,
-                          normalize=True,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
+def plot_confusion_matrix(
+    y_true, 
+    y_hat,
+    normalize=True,
+    title='Confusion matrix',
+    cmap=plt.cm.Blues
+):
     """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
@@ -34,18 +37,23 @@ def plot_confusion_matrix(y_true, y_hat,
     plt.yticks(tick_marks, classes)
 
     if normalize:
-        confusion_matrix = np.round((confusion_matrix.astype('float') 
-                                     / confusion_matrix.sum(axis=1)[:, np.newaxis]), 2)
+        confusion_matrix = np.round((
+            confusion_matrix.astype('float') / confusion_matrix.sum(axis=1)[:, np.newaxis]
+        ), 2)
 
     thresh = confusion_matrix.max() / 2.
-    for i, j in itertools.product(range(confusion_matrix.shape[0]), 
-                                  range(confusion_matrix.shape[1])):
-        
-        plt.text(j, 
-                 i, 
-                 confusion_matrix[i, j],
-                 horizontalalignment="center",
-                 color="white" if confusion_matrix[i, j] > thresh else "black")
+
+    for i, j in itertools.product(
+        range(confusion_matrix.shape[0]), 
+        range(confusion_matrix.shape[1])
+    ):
+        plt.text(
+            j, 
+            i, 
+            confusion_matrix[i, j],
+            horizontalalignment="center",
+            color="white" if confusion_matrix[i, j] > thresh else "black"
+        )
 
     plt.tight_layout()
     plt.ylabel('True label')
@@ -73,14 +81,22 @@ def visualise_predictions(X, y_true, y_hat):
 	
 def report_results(cv_scores, train_scores=None): 
     print("Cross-Validation (CV) results:\n")
+
     if train_scores != None:
-        print("Mean training score: %.2f%% +- %.2f%%" % (train_scores.mean() * 100, 
-                                                         train_scores.std() * 200))
+        print(
+            "Mean training score: %.2f%% +- %.2f%%" % 
+            (train_scores.mean() * 100, train_scores.std() * 200)
+        )
+
     print("Min test score: %.2f%% \t\t\t\t<- worst case" % (cv_scores.min() * 100))
     print("Max test score: %.2f%% \t\t\t\t<- best case" % (cv_scores.max() * 100))
-    print("Mean test score: %.2f%% +- %.2f%% (95%% conf.) \t<- expected performance" % 
-          (cv_scores.mean() * 100, cv_scores.std() * 200))
+
+    print(
+        "Mean test score: %.2f%% +- %.2f%% (95%% conf.) \t<- expected performance" % 
+        (cv_scores.mean() * 100, cv_scores.std() * 200)
+    )
     
-    print("\n95/100 times the test score will be in range %.2f-%.2f%%" %
-         (((cv_scores.mean() - 2 * cv_scores.std()) * 100), 
-          ((cv_scores.mean() + 2 * cv_scores.std()) * 100)))
+    print(
+        "\n95/100 times the test score will be in range %.2f-%.2f%%" %
+        (((cv_scores.mean() - 2 * cv_scores.std()) * 100), ((cv_scores.mean() + 2 * cv_scores.std()) * 100))
+    )

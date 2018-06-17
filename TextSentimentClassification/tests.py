@@ -6,10 +6,12 @@ Created on Mon Jun 19 14:27:37 2017
 """
 
 from unittest import TestCase, main
-from preprocessing import (clean, 
-                           tokenize, 
-                           tokenize_n_stem, 
-                           tokenize_n_lemmatize)
+from preprocessing import (
+    clean, 
+    tokenize, 
+    tokenize_n_stem, 
+    tokenize_n_lemmatize
+)
 
 
 class Test(TestCase):
@@ -22,18 +24,24 @@ class Test(TestCase):
     
     
     def test_tokenize_fun(self):
-        self.assertEqual(tokenize('runners like running and thus they run'),
-                         ['runners', 'like', 'running', 'thus', 'run'])
+        self.assertEqual(
+            tokenize('runners like running and thus they run'),
+            ['runners', 'like', 'running', 'thus', 'run']
+        )
         
         
     def test_tokenize_n_stem_fun(self):
-        self.assertEqual(tokenize_n_stem('runners like running and thus they run'),
-                         ['runner', 'like', 'run', 'thus', 'run'])
+        self.assertEqual(
+            tokenize_n_stem('runners like running and thus they run'),
+            ['runner', 'like', 'run', 'thus', 'run']
+        )
         
         
     def test_tokenize_n_lemmatize_fun(self):
-        self.assertEqual(tokenize_n_lemmatize('runners like running and thus they run'),
-                         ['runner', 'like', 'running', 'thus', 'run'])    
+        self.assertEqual(
+            tokenize_n_lemmatize('runners like running and thus they run'),
+            ['runner', 'like', 'running', 'thus', 'run']
+        )    
     
     
 if __name__ == "__main__":

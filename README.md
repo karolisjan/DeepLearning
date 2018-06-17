@@ -3,8 +3,8 @@
 
 * [BreakingSimpleCaptchas](BreakingSimpleCaptchas) - a Convolutional Neural Network (CNN)-based captcha breaker
 * [Autoencoder](Autoencoder) - a CNN-based autoencoder for denoising MNIST images
-* [SmilesDetection](SmilesDetection) - end-to-end CNN-based detection of smiles in a video stream in real-time
-* [TextSentimentClassification](TextSentimentClassification) - classification of sentinemt in IMDB movie reviews
+* [SmilesDetection](SmilesDetection) - real-time end-to-end CNN-based detection of smiles in a video stream
+* [TextSentimentClassification](TextSentimentClassification) - sentiment classification in the IMDB movie reviews
 
 ## Setup
 

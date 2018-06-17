@@ -41,19 +41,21 @@ def preprocess(imdb_movie_reviews_root):
                     preprocessed[s]['sentiment'].append(labels[l])
                     
     
-    return pd.DataFrame(preprocessed['train']), \
-           pd.DataFrame(preprocessed['test'])
+    return pd.DataFrame(preprocessed['train']), pd.DataFrame(preprocessed['test'])
            
            
 def tokenize(text):    
     # Split into sentences first then tokenize each sentence
     # TweetTokenizer is used to preserve the emoticons in the text
-    tokens = [word for sentence in nltk.sent_tokenize(text)
-              for word in TweetTokenizer().tokenize(clean(sentence))]
+    tokens = [
+        word for sentence in nltk.sent_tokenize(text)
+        for word in TweetTokenizer().tokenize(clean(sentence))
+    ]
     
     # Remove stopwords
-    tokens = [token for token in tokens 
-              if not token.lower() in stopwords]
+    tokens = [
+        token for token in tokens if not token.lower() in stopwords
+    ]
 
     return tokens           
 
