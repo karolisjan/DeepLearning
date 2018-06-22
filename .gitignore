@@ -110,3 +110,5 @@ MNIST_data
 logs
 SMILEsmileD
 aclImdb
+FacialLandmarksDetection/data/*csv
+PhotoCaptioning/data

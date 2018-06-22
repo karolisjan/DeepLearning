@@ -77,7 +77,6 @@ if __name__ == '__main__':
             p = 100 * predictions[prediction]
             label = 'Smiling (%.2f%%)' % p if prediction else 'Not smiling (%.2f%%)' % p
 
-
             cv2.putText(
                 frame_copy,
                 label,
@@ -102,10 +101,11 @@ if __name__ == '__main__':
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    with imageio.get_writer(args.output_path, mode='I') as writer:
-        for frame in output:
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            writer.append_data(frame)
+    if 'output_path' in args:
+        with imageio.get_writer(args.output_path, mode='I') as writer:
+            for frame in output:
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                writer.append_data(frame)
 
     camera.release()
     cv2.destroyAllWindows()
