@@ -4,6 +4,7 @@ End-to-end CNN-based detection of facial landmarks in a video stream in real-tim
 
 <p  align='center'>
     <img href='Result' src='media/rock.gif'></img>
+    <img href='Result' src='media/agents_out.gif'></img>
 </p>
 
 ## Usage
